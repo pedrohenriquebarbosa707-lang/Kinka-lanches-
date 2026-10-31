@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<title>Kinka Lanches | Barreiras, Bahia</title>
+<meta name="description" content="Peça seu lanche favorito na Kinka Lanches, em Barreiras, Bahia. Confira o cardápio e faça seu pedido pelo WhatsApp.">
+<style>
+:root{--yellow:#ffca05;--ink:#111;--cream:#f7f0e4;--red:#e9362e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream)}
+header{position:sticky;top:0;z-index:10;background:#111;color:white;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:900;letter-spacing:2px}.brand span{color:var(--yellow)}nav a{color:white;text-decoration:none;font-size:13px;font-weight:bold;margin-left:18px}
+.hero{min-height:560px;color:white;display:flex;align-items:center;padding:70px 7%;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.35)),url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85') center/cover;background-color:#222}
+.hero-inner{max-width:650px}.eyebrow{color:var(--yellow);letter-spacing:4px;font-size:12px;font-weight:900}.hero h1{font-size:clamp(42px,8vw,76px);line-height:.92;margin:20px 0;text-transform:uppercase;font-weight:1000;letter-spacing:-2px}.hero h1 span{color:var(--yellow)}.hero p{max-width:470px;line-height:1.7;color:#ddd}
+.btn{display:inline-block;background:var(--yellow);color:#111;padding:16px 24px;border-radius:40px;text-decoration:none;font-weight:900;font-size:13px;border:0;cursor:pointer;margin:10px 8px 0 0}.btn.secondary{background:transparent;border:1px solid #777;color:white}
+section{padding:64px 6%}.section-kicker{font-size:11px;color:var(--red);font-weight:900;letter-spacing:3px}.section-title{font-size:clamp(34px,6vw,52px);text-transform:uppercase;margin:10px 0 14px;font-weight:1000}.intro{color:#666;line-height:1.6}
+.filters{display:flex;gap:10px;overflow:auto;padding:18px 0}.filter{white-space:nowrap;border:1px solid #ccc;background:transparent;padding:11px 17px;border-radius:25px;font-weight:800;font-size:11px;cursor:pointer}.filter.active{background:#111;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}.item{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 28px #0000000d}.item .photo{height:190px;background:#ddd;display:grid;place-items:center;color:#555;font-size:13px;background-size:cover;background-position:center}.item-content{padding:18px}.tag{display:inline-block;background:var(--yellow);padding:6px 9px;border-radius:20px;font-size:10px;font-weight:900}.item h3{margin:12px 0 8px;font-size:20px}.item p{color:#777;font-size:13px;line-height:1.5;min-height:38px}.price{font-weight:900;color:var(--red)}.order{display:block;width:100%;border:0;background:#111;color:white;border-radius:30px;padding:13px;margin-top:14px;font-weight:900;cursor:pointer}
+.callout{background:#111;color:white;text-align:center}.callout h2{font-size:clamp(30px,5vw,46px);text-transform:uppercase}.callout p{color:#ccc;line-height:1.6}
+footer{background:#080808;color:#aaa;padding:30px 6%;font-size:12px;line-height:1.7}footer strong{color:white}
+@media(max-width:600px){nav a{margin-left:9px;font-size:11px}.hero{min-height:500px;padding:55px 6%}section{padding:48px 5%}}
+</style>
+</head>
+<body>
+<header><div class="brand">KINKA<span>.</span></div><nav><a href="#menu">CARDÁPIO</a><a href="#contato">CONTATO</a></nav></header>
+<main>
+<section class="hero">
+<div class="hero-inner">
+<div class="eyebrow">BARREIRAS, BAHIA</div>
+<h1>Seu lanche<br><span>favorito</span><br>está aqui.</h1>
+<p>Aquela fome pede Kinka. Escolha seus favoritos e faça seu pedido pelo WhatsApp.</p>
+<a class="btn" href="#menu">VER CARDÁPIO →</a>
+<a class="btn secondary" href="#contato">PEÇA PELO WHATSAPP</a>
+</div>
+</section>
+<section id="menu">
+<div class="section-kicker">FEITO PARA DAR ÁGUA NA BOCA</div>
+<h2 class="section-title">O cardápio<span style="color:var(--red)">.</span></h2>
+<p class="intro">Confira nossos lanches. Os produtos e preços abaixo são exemplos para você substituir pelos dados reais da Kinka.</p>
+<div class="filters" id="filters">
+<button class="filter active" data-cat="Todos">TODOS</button><button class="filter" data-cat="Hambúrgueres">HAMBÚRGUERES</button><button class="filter" data-cat="Sanduíches">SANDUÍCHES</button><button class="filter" data-cat="Bebidas">BEBIDAS</button>
+</div>
+<div class="grid" id="products"></div>
+</section>
+<section class="callout" id="contato">
+<div class="section-kicker">BATEU A FOME?</div>
+<h2>Seu próximo lanche<br>está a uma mensagem.</h2>
+<p>Faça seu pedido pelo WhatsApp e confirme disponibilidade, valores e entrega.</p>
+<a class="btn" id="whatsapp" href="#" target="_blank" rel="noopener">PEDIR PELO WHATSAPP →</a>
+</section>
+</main>
+<footer><strong>KINKA LANCHES</strong><br>Barreiras, Bahia<br>Cardápio e pedidos pelo WhatsApp.<br><small>Substitua os dados de exemplo no arquivo index.html antes de divulgar.</small></footer>
+<script>
+/* PERSONALIZE: coloque o WhatsApp da loja com DDI 55 + DDD + número, somente números.
+   Exemplo de formato: "5577999999999". */
+const WHATSAPP = "5577999999999";
+const products = [
+ {name:"Nome do hambúrguer",category:"Hambúrgueres",description:"Descreva os ingredientes e o diferencial deste lanche.",price:"R$ --",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"},
+ {name:"Nome do sanduíche",category:"Sanduíches",description:"Adicione uma descrição curta e apetitosa.",price:"R$ --",image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=900&q=80"},
+ {name:"Bebida",category:"Bebidas",description:"Informe o tamanho e a opção de bebida.",price:"R$ --",image:""}
+];
+function render(category="Todos"){
+ const list=products.filter(p=>category==="Todos"||p.category===category);
+ document.querySelector("#products").innerHTML=list.map(p=>`<article class="item"><div class="photo" style="${p.image?`background-image:url('${p.image}')`:''}">${p.image?'':'Foto do produto'}</div><div class="item-content"><span class="tag">${p.category.toUpperCase()}</span><h3>${p.name}</h3><p>${p.description}</p><div class="price">${p.price}</div><button class="order" onclick="order('${p.name}')">＋ ADICIONAR AO PEDIDO</button></div></article>`).join("");
+}
+function order(name){const msg=encodeURIComponent(`Olá! Quero pedir: ${name}.`);window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank")}
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.cat)}));
+document.querySelector("#whatsapp").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de fazer um pedido.")}`;
+render();
+</script>
+</body>
+</html>
