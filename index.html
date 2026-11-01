@@ -51,23 +51,51 @@ footer{background:#080808;color:#aaa;padding:30px 6%;font-size:12px;line-height:
 </section>
 </main>
 <footer><strong>KINKA LANCHES</strong><br>Barreiras, Bahia<br>Cardápio e pedidos pelo WhatsApp.<br><small>Substitua os dados de exemplo no arquivo index.html antes de divulgar.</small></footer>
+
 <script>
-/* PERSONALIZE: coloque o WhatsApp da loja com DDI 55 + DDD + número, somente números.
-   Exemplo de formato: "5577999999999". */
-const WHATSAPP = const WHATSAPP = "5577999712458";
+const WHATSAPP = "5577999712458";
+
 const products = [
  {name:"Nome do hambúrguer",category:"Hambúrgueres",description:"Descreva os ingredientes e o diferencial deste lanche.",price:"R$ --",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"},
  {name:"Nome do sanduíche",category:"Sanduíches",description:"Adicione uma descrição curta e apetitosa.",price:"R$ --",image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=900&q=80"},
  {name:"Bebida",category:"Bebidas",description:"Informe o tamanho e a opção de bebida.",price:"R$ --",image:""}
 ];
-function render(category="Todos"){
- const list=products.filter(p=>category==="Todos"||p.category===category);
- document.querySelector("#products").innerHTML=list.map(p=>`<article class="item"><div class="photo" style="${p.image?`background-image:url('${p.image}')`:''}">${p.image?'':'Foto do produto'}</div><div class="item-content"><span class="tag">${p.category.toUpperCase()}</span><h3>${p.name}</h3><p>${p.description}</p><div class="price">${p.price}</div><button class="order" onclick="order('${p.name}')">＋ ADICIONAR AO PEDIDO</button></div></article>`).join("");
+
+function order(name) {
+ const msg = encodeURIComponent(`Olá! Quero pedir: ${name}.`);
+ window.location.href = `https://wa.me/${WHATSAPP}?text=${msg}`;
 }
-function order(name){const msg=encodeURIComponent(`Olá! Quero pedir: ${name}.`window.location.href=`https://wa.me/${WHATSAPP}?text=${msg}`
-document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.cat)}));
-document.querySelector("#whatsapp").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de fazer um pedido.")}`;
+
+function render(category = "Todos") {
+ const list = products.filter(p => category === "Todos" || p.category === category);
+ document.querySelector("#products").innerHTML = list.map(p => `
+  <article class="item">
+   <div class="photo" style="${p.image ? `background-image:url('${p.image}')` : ''}">
+    ${p.image ? '' : 'Foto do produto'}
+   </div>
+   <div class="item-content">
+    <span class="tag">${p.category.toUpperCase()}</span>
+    <h3>${p.name}</h3>
+    <p>${p.description}</p>
+    <div class="price">${p.price}</div>
+    <button class="order" onclick="order('${p.name}')">＋ ADICIONAR AO PEDIDO</button>
+   </div>
+  </article>
+ `).join("");
+}
+
+document.querySelectorAll(".filter").forEach(b => {
+ b.addEventListener("click", () => {
+  document.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  render(b.dataset.cat);
+ });
+});
+
+document.querySelector("#whatsapp").href =
+ `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de fazer um pedido.")}`;
+
+document.querySelector("#whatsapp").target = "_self";
+
 render();
 </script>
-</body>
-</html>
