@@ -64,7 +64,7 @@ function render(category="Todos"){
  const list=products.filter(p=>category==="Todos"||p.category===category);
  document.querySelector("#products").innerHTML=list.map(p=>`<article class="item"><div class="photo" style="${p.image?`background-image:url('${p.image}')`:''}">${p.image?'':'Foto do produto'}</div><div class="item-content"><span class="tag">${p.category.toUpperCase()}</span><h3>${p.name}</h3><p>${p.description}</p><div class="price">${p.price}</div><button class="order" onclick="order('${p.name}')">＋ ADICIONAR AO PEDIDO</button></div></article>`).join("");
 }
-function order(name){const msg=encodeURIComponent(`Olá! Quero pedir: ${name}.`);window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank")}
+function order(name){const msg=encodeURIComponent(`Olá! Quero pedir: ${name}.`window.location.href=`https://wa.me/${WHATSAPP}?text=${msg}`
 document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.cat)}));
 document.querySelector("#whatsapp").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de fazer um pedido.")}`;
 render();
